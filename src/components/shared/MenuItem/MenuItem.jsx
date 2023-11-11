@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const MenuItem = ({ item }) => {
   const { name, image, price, recipe } = item;
   return (
@@ -15,3 +17,6 @@ const MenuItem = ({ item }) => {
 };
 
 export default MenuItem;
+MenuItem.propTypes = {
+  item: PropTypes.object,
+}

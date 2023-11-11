@@ -3,7 +3,8 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 
 const Featured = () => {
 	return (
-		<div className="w-full h-screen bg-fixed  bg-[url('https://i.postimg.cc/pLy9J63w/featured.jpg')] bg-cover bg-center">
+		<div className="px-12">
+			<div className="w-full h-screen bg-fixed bg-[url('https://i.postimg.cc/pLy9J63w/featured.jpg')] bg-cover bg-center">
 			<div className="w-full h-full text-white  
              bg-[#585858]/30 backdrop-brightness-75 pt-12">
 			<SectionTitle
@@ -21,6 +22,7 @@ const Featured = () => {
 				</div>
 			</div>
 			</div>
+		</div>
 		</div>
 	);
 };
