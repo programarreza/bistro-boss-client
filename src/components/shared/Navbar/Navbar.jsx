@@ -2,20 +2,52 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navLink = (
-    <>
+    <div className="flex gap-6 ">
       <NavLink
         to="/"
         className={({ isActive, isPending }) =>
           isPending ? "pending" : isActive ? "text-white-500 underline" : ""
         }
       >
-        Home
+        HOME
       </NavLink>
-    </>
+      <NavLink
+        to="/contact"
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "text-white-500 underline" : ""
+        }
+      >
+        CONTACT US
+      </NavLink>
+      <NavLink
+        to="/dashboard"
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "text-white-500 underline" : ""
+        }
+      >
+        DASHBOARD
+      </NavLink>
+      <NavLink
+        to="/menu"
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "text-white-500 underline" : ""
+        }
+      >
+        OUR MENU
+      </NavLink>
+      <NavLink
+        to="/order/salads"
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "text-white-500 underline" : ""
+        }
+      >
+        ORDER FOOD
+      </NavLink>
+    </div>
   );
   return (
     <>
-      <div className="navbar max-w-screen-xl fixed z-10 opacity-50 text-white bg-[#15151580]">
+      <div className="navbar max-w-screen-xl  fixed z-10 opacity-50 text-white bg-[#15151580]">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -43,12 +75,12 @@ const Navbar = () => {
           </div>
           <a className="btn btn-ghost normal-case text-xl">BISTRO BOSS </a>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLink}</ul>
         </div>
-        <div className="navbar-end">
+        {/* <div className="navbar-end">
           <a className="btn">Button</a>
-        </div>
+        </div> */}
       </div>
     </>
   );
