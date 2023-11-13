@@ -1,6 +1,17 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const navLink = (
     <div className="flex gap-6 ">
       <NavLink
@@ -43,6 +54,36 @@ const Navbar = () => {
       >
         ORDER FOOD
       </NavLink>
+      {user ? (
+        <>
+        <h4>{user?.displayName}</h4>
+          <button
+            onClick={handleSignOut}
+            className="btn btn-outline btn-primary btn-sm text-white"
+          >
+            Log Out
+          </button>
+        </>
+      ) : (
+        <>
+          <NavLink
+            to="/login"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-white-500 underline" : ""
+            }
+          >
+            Login
+          </NavLink>
+          <NavLink
+            to="/secret"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-white-500 underline" : ""
+            }
+          >
+            secter
+          </NavLink>
+        </>
+      )}
     </div>
   );
   return (

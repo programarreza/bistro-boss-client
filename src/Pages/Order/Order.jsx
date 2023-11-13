@@ -23,7 +23,7 @@ const Order = () => {
 
   
   return (
-    <div>
+    <div className="">
        <Helmet>
         <title>Bistro Boss | Order Food</title>
       </Helmet>
@@ -34,7 +34,7 @@ const Order = () => {
       ></Cover>
 
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-        <TabList>
+        <TabList className={"text-center py-2 bg-slate-200 max-w-sm mx-auto rounded-sm text-[#BB8506] font-semibold text-lg"}>
           <Tab>Salad</Tab>
           <Tab>Pizza</Tab>
           <Tab>Soup</Tab>
