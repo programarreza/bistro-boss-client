@@ -1,8 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import { FaCartShopping } from "react-icons/fa6";
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const [cart] = useCart()
 
   const handleSignOut = () => {
     logOut()
@@ -56,13 +59,21 @@ const Navbar = () => {
       </NavLink>
       {user ? (
         <>
-        <h4>{user?.displayName}</h4>
+          {/* <h4>{user?.displayName}</h4> */}
+          <Link to={"/dashboard/cart"} className="flex"> 
+          <button className="btn btn-sm ">
+            <FaCartShopping className="text-xl" />
+              <div className="badge badge-secondary">+{cart?.length}</div>
+            </button>
+          </Link>
+          
           <button
             onClick={handleSignOut}
             className="btn btn-outline btn-primary btn-sm text-white"
           >
             Log Out
           </button>
+          
         </>
       ) : (
         <>
@@ -74,14 +85,15 @@ const Navbar = () => {
           >
             Login
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/secret"
             className={({ isActive, isPending }) =>
               isPending ? "pending" : isActive ? "text-white-500 underline" : ""
             }
           >
             secter
-          </NavLink>
+          </NavLink> */}
+          
         </>
       )}
     </div>
@@ -119,9 +131,6 @@ const Navbar = () => {
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLink}</ul>
         </div>
-        {/* <div className="navbar-end">
-          <a className="btn">Button</a>
-        </div> */}
       </div>
     </>
   );

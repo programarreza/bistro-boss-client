@@ -15,6 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
+  console.log("state in the location login page", location.state);
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -31,7 +32,7 @@ const Login = () => {
       .then((result) => {
         toast.success("Login Successfully");
         console.log(result.user);
-		navigate(from, {replace: true})
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -105,12 +106,13 @@ const Login = () => {
                     name="captcha"
                     placeholder="type the captcha above"
                     className="input input-bordered "
-                    required
+                    
                   />
                 </div>
                 <div className="form-control mt-2">
+                  {/* TODO: apply disabled for re captcha */}
                   <button
-                    disabled={disabled}
+                    disabled={false}
                     type="submit"
                     className="btn bg-[#D1A054B3] text-white hover:text-black"
                   >
