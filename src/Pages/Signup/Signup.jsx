@@ -40,7 +40,7 @@ const  navigate = useNavigate()
 
       <div className="w-full min-h-screen bg-[url('https://i.postimg.cc/6pQTsdwS/authentication.png')] bg-cover bg-center">
         <div className="hero  pt-8">
-          <div className="hero-content flex shadow-2xl rounded-xl border-t-4 px-24 gap-24">
+          <div className="hero-content flex flex-row-reverse shadow-2xl rounded-xl border-t-4 px-24 gap-24">
             <div className="text-center lg:text-left w-1/2">
               <img
                 className=""
