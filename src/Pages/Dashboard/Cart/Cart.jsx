@@ -2,6 +2,7 @@ import { FaIdeal, FaTrash } from "react-icons/fa6";
 import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { MdBorderColor } from "react-icons/md";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -81,7 +82,7 @@ const Cart = () => {
 
                 <th>
                   <button className="btn btn-ghost btn-xl">
-                    <FaIdeal className="text-red-500"></FaIdeal>
+                    <MdBorderColor />
                   </button>
                 </th>
                 <th>

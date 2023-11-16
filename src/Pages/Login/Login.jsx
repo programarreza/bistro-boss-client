@@ -8,6 +8,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import useAuth from "../../hooks/useAuth";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -110,7 +111,7 @@ const Login = () => {
                   />
                 </div>
                 <div className="form-control mt-2">
-                  {/* TODO: apply disabled for re captcha */}
+                  {/* TODO: apply disabled for re captcha value true */}
                   <button
                     disabled={false}
                     type="submit"
@@ -128,6 +129,7 @@ const Login = () => {
                   </p>
                 </div>
               </form>
+              <SocialLogin/>
             </div>
           </div>
         </div>

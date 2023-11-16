@@ -3,10 +3,13 @@ import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Signup = () => {
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUserProfile } = useAuth();
-const  navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     reset,
@@ -15,19 +18,31 @@ const  navigate = useNavigate()
   } = useForm();
 
   const onSubmit = (data) => {
-    createUser(data.email, data.password)
-     .then((result) => {
-      toast.success("SignUp Successfully");
+    // user registration with firebase
+    createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+
+      // profile update
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          console.log("user profile update");
-          reset();
-          navigate('/')
+          // create user entry in the database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/api/v1/users", userInfo)
+          .then((res) => {
+            if (res.data.insertedId) {
+              toast.success("SignUp Successfully");
+              reset();
+              navigate("/");
+            }
+          });
         })
         .catch((error) => {
           console.log(error);
+          toast.error(error);
         });
     });
   };
@@ -144,8 +159,12 @@ const  navigate = useNavigate()
                       <span className="font-semibold">Go to log in</span>
                     </Link>
                   </p>
+                  <div className="divider"></div>
                 </div>
               </form>
+                  <div>
+                    <SocialLogin/>
+                  </div>
             </div>
           </div>
         </div>

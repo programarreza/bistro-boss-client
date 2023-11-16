@@ -59,7 +59,7 @@ const Navbar = () => {
       </NavLink>
       {user ? (
         <>
-          {/* <h4>{user?.displayName}</h4> */}
+          <h4>{user?.displayName}</h4>
           <Link to={"/dashboard/cart"} className="flex"> 
           <button className="btn btn-sm ">
             <FaCartShopping className="text-xl" />
