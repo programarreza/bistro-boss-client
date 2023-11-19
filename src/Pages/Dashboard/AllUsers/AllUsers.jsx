@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { FaTrash, FaUsers } from "react-icons/fa6";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { FaTrash, FaUsers } from "react-icons/fa6";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -81,8 +81,9 @@ const AllUsers = () => {
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
                         <img
-                          src="/tailwind-css-component-profile-2@56w.png"
-                          alt="Avatar Tailwind CSS Component"
+                        // TODO: image empty in database 
+                          src={user?.image}
+                          alt="user profile image"
                         />
                       </div>
                     </div>
