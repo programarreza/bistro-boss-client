@@ -2,10 +2,12 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { FaCartShopping } from "react-icons/fa6";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  const [cart] = useCart()
+  const [cart] = useCart();
+  const [isAdmin] = useAdmin();
 
   const handleSignOut = () => {
     logOut()
@@ -60,20 +62,19 @@ const Navbar = () => {
       {user ? (
         <>
           <h4>{user?.displayName}</h4>
-          <Link to={"/dashboard/cart"} className="flex"> 
-          <button className="btn btn-sm ">
-            <FaCartShopping className="text-xl" />
+          <Link to={"/dashboard/cart"} className="flex">
+            <button className="btn btn-sm ">
+              <FaCartShopping className="text-xl" />
               <div className="badge badge-secondary">+{cart?.length}</div>
             </button>
           </Link>
-          
+
           <button
             onClick={handleSignOut}
             className="btn btn-outline btn-primary btn-sm text-white"
           >
             Log Out
           </button>
-          
         </>
       ) : (
         <>
@@ -93,7 +94,34 @@ const Navbar = () => {
           >
             secter
           </NavLink> */}
-          
+          {user && isAdmin && (
+            <NavLink
+              to="/dashboard/adminHome"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "text-white-500 underline"
+                  : ""
+              }
+            >
+              Dashboard
+            </NavLink>
+          )}
+          {user && !isAdmin && (
+            <NavLink
+              to="/dashboard/userHome"
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "text-white-500 underline"
+                  : ""
+              }
+            >
+              Dashboard
+            </NavLink>
+          )}
         </>
       )}
     </div>
