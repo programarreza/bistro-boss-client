@@ -5,6 +5,7 @@ import useMenu from "../../../hooks/useMenu";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
   const [menu, refetch] = useMenu();
@@ -22,13 +23,12 @@ const ManageItems = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(id);
+        // console.log(id);
         axiosSecure
           .delete(`/api/v1/menu/${id}`)
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.deletedCount > 0) {
-              // refetch to update the ui
               refetch();
               toast.success("Delete successfully");
             }
@@ -78,9 +78,11 @@ const ManageItems = () => {
                   <td>{item?.name}</td>
                   <td>$ {item?.price}</td>
                   <th>
-                    <button className="p-3 bg-[#D1A054] rounded-sm">
-                      <FaEdit className="text-white" />
-                    </button>
+                    <Link to={`/dashboard/updateItem/${item?._id}`}>
+                      <button className="p-3 bg-[#D1A054] rounded-sm">
+                        <FaEdit className="text-white" />
+                      </button>
+                    </Link>
                   </th>
                   <th>
                     <button

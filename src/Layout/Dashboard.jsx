@@ -54,11 +54,11 @@ const Dashboard = () => {
               </li>
               <li className="flex items-center gap-2">
                 <FaCalendar />
-                <NavLink to={"/dashboard/reservation"}>Reservation</NavLink>
+                <NavLink to={"/dashboard/paymentHistory"}> PAYMENT HISTORY</NavLink>
               </li>
               <li className="flex items-center gap-2">
                 <MdOutlinePayment />
-                <NavLink to={"/dashboard/payment"}>PAYMENT HISTORY</NavLink>
+                <NavLink to={"/dashboard/payment"}>Reservation</NavLink>
               </li>
               <li className="flex items-center gap-2">
                 <MdAddShoppingCart />
